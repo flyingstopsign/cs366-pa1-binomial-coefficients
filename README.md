@@ -29,3 +29,13 @@ On Windows, use `gradlew.bat test` and `gradlew.bat run`.
 - `REPORT.md` — record timing data, efficiency and accuracy observations, sources, and the required AI-use disclosure. Export the completed report to `REPORT.pdf` for submission.
 
 Do not change the package, class name, required method signatures, Gradle configuration, or tests. The supplied tests cover representative behavior but are not a complete specification.
+
+## Download your work from Codespaces
+
+You do not need to commit or push your work. Open a terminal at the project root and run:
+
+```bash
+zip -r submission.zip . -x 'submission.zip' '.git/*' '.gradle/*' 'build/*'
+```
+
+Locate `submission.zip` in the Explorer, right-click it, and select **Download...**. Open the downloaded ZIP and confirm that it contains your completed source and report files, then submit it through Kodiak.
