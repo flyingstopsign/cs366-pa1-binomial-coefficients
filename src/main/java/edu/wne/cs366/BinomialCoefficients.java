@@ -13,8 +13,21 @@ public class BinomialCoefficients {
      * @return the computed coefficient, or -1 when n or k is invalid
      */
     public static long binomialDefinition(int n, int k) {
-        // TODO: Validate the inputs and calculate all three factorials using for loops.
-        throw new UnsupportedOperationException("TODO: implement binomialDefinition");
+        if (n<0 || k<0 || k>n){
+            return -1;
+        }
+        long nfactorial = factorial(n);
+        long kfactorial = factorial(k);
+        long nminuskfactorial = factorial (n-k);
+        return nfactorial/ (kfactorial * nminuskfactorial);
+    }
+    private static long factorial(int x) {
+        long result = 1;
+        for (int i= 2; i <=x; i++);{
+            result *=1;
+        }
+        return result;
+
     }
 
     /**
