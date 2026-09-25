@@ -36,10 +36,24 @@ public class BinomialCoefficients {
      * @return the computed coefficient, or -1 when n or k is invalid
      */
     public static long binomialCancellation(int n, int k) {
-        // TODO: Use r = min(k, n-k), a numerator loop, and a denominator loop.
-        throw new UnsupportedOperationException("TODO: implement binomialCancellation");
+    if (n < 0 || k < 0 || k > n) {
+        return -1;
     }
 
+    int r = Math.min(k, n - k);
+
+    long numerator = 1;
+    for (int i = n - r + 1; i <= n; i++) {
+        numerator *= i;
+    }
+
+    long denominator = 1;
+    for (int i = 1; i <= r; i++) {
+        denominator *= i;
+    }
+
+    return numerator / denominator;
+}
     /**
      * Computes C(n, k) recursively using Pascal's identity.
      *
