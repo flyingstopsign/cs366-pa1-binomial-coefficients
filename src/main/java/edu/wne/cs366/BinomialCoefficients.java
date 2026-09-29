@@ -40,7 +40,6 @@ public class BinomialCoefficients {
         return -1;
     }
 
-    int r = Math.min(k, n - k);
 
     long numerator = 1;
     for (int i = n - r + 1; i <= n; i++) {
@@ -63,9 +62,14 @@ public class BinomialCoefficients {
         if (n < 0 || k < 0 || k > n){
             return -1;
         }
-        long 
-  
+        return pascal(n,k);
     }
+    private static long pascal(int n, int k){
+        if (k == 0 || n == 0){
+            return 1;
+        }
+        return pascal(n-1,k-1) + pascal(n-1,k);
+    } 
 
     /**
      * Starter driver. Expand this into the timing experiment described in the handout.
