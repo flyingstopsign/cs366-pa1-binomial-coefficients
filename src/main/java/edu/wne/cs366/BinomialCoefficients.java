@@ -60,8 +60,11 @@ public class BinomialCoefficients {
      * @return the computed coefficient, or -1 when n or k is invalid
      */
     public static long binomialRecursive(int n, int k) {
-        // TODO: Validate, handle both boundary values, and apply Pascal's identity.
-        throw new UnsupportedOperationException("TODO: implement binomialRecursive");
+        if (n < 0 || k < 0 || k > n){
+            return -1;
+        }
+        long 
+  
     }
 
     /**
