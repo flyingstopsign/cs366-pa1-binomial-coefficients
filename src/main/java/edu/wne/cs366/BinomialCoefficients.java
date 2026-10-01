@@ -9,34 +9,27 @@ import java.math.BigInteger;
  */
 public class BinomialCoefficients {
 
-    /**
-     * Computes C(n, k) from n! / (k! * (n-k)!).
-     *
-     * @return the computed coefficient, or -1 when n or k is invalid
-     */
-    public static long binomialDefinition(int n,int k) {
-        if (n<0 || k<0 || k>n){
+    public static long binomialDefinition(int n, int k) {
+        if (n < 0 || k < 0 || k > n) {
             return -1;
         }
-        long nfactorial = factorial(n);
-        long kfactorial = factorial(k);
-        long nminuskfactorial = factorial (n-k);
-        return nfactorial/ (kfactorial * nminuskfactorial);
+ 
+        long nfact = factorial(n);
+        long kfact = factorial(k);
+        long nMinusKFact = factorial(n - k);
+ 
+        return nfact / (kfact * nMinusKFact);
     }
-    private static long factorial(int x) {
+ 
+    private static long factorial(int m) {
         long result = 1;
-        for (int i= 2; i <=x; i++);{
-            result *=1;
+        for (int i = 2; i <= m; i++) {
+            result *= i;
         }
-        return result;
-
+        return result;   // 0! and 1! both return 1
     }
 
-    /**
-     * Computes C(n, k) after canceling the shared factorial terms.
-     *
-     * @return the computed coefficient, or -1 when n or k is invalid
-     */
+
     public static long binomialCancellation(int n,int k) {
     if (n < 0 || k < 0 || k > n) {
         return -1;
@@ -54,12 +47,8 @@ public class BinomialCoefficients {
     }
 
     return numerator / denominator;
-}
-    /**
-     * Computes C(n, k) recursively using Pascal's identity.
-     *
-     * @return the computed coefficient, or -1 when n or k is invalid
-     */
+    }
+
     public static long binomialRecursive(int n, int k) {
         if (n < 0 || k < 0 || k > n){
             return -1;
@@ -83,17 +72,15 @@ private interface Method { //driver
     private static long sink = 0;
  
     public static void main(String[] args) {
-        System.out.println("CS366 PA01: Binomial Coefficients");
-        System.out.println("Java " + System.getProperty("java.version"));
  
-        warmUp()
+        warmUp();
  
         requiredCases();
         boundaryCases();
         invalidInputs();
         recursiveSlowdown();
         overflowInvestigation();
- 
+
         System.out.println();
         System.out.println("(checksum, ignore: " + sink + ")");
     }
